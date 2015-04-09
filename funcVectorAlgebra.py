@@ -1,6 +1,8 @@
 import math 
 import os
 import sys
+import numpy as np
+import geom_readers
 ''' FUNCTION TO RETURN THE DISTANCE BETWEEN TWO POINTS'''
 
 def distance_points(tuple1,tuple2):
@@ -348,56 +350,6 @@ def theta_interpolation(theta_segment,point,segment):
         theta_interp = (1.0 - theta_paramater_x) * theta_segment[0] + theta_paramater_x * theta_segment[1]
         
         return theta_interp      
-        
-
-
-'''  work out the translation at the halo cells. Assume as an average'''
-
-
-
-
-
-
-
-
-
-
-'''
-
-
-theta=deg2rad(180)
-
-#point_to_be_rotated = (1.5,4.0,0.0)
-
-#origin_of_the_system = (0.0,0.0,0.0)
-
-#axis_rotation = [1.5,0.0,0.0]
-
-
-surf_points = (2.0, 4.0, 0.0)
-two_points = [(1.0, 1.0,0.0),(5.0, 5.0,0.0)]
-
-point_to_be_rotated=surf_points
-
-pr_point = funcVectorAlgebra.project(surf_points,two_points)
-
-print pr_point
-
-
-origin_of_the_system=pr_point
-#origin_of_the_system = (0.0,0.0,0.0)
-
-#axis_rotation=[0.0,1.0,0.0]    
-axis_rotation = (pr_point[0],0.0,0.0)
-#axis_rotation = pr_point
-
-    #axis_rotation=[1.0,0.0,0.0]
-    #origin_of_the_system=projected_points[ind]
-rotated_point = funcVectorAlgebra.pointRotate3D(origin_of_the_system,axis_rotation,point_to_be_rotated,theta)
-
-print rotated_point    
-
-'''
 
 
 
