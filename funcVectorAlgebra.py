@@ -266,7 +266,7 @@ def pointRotate3D(p1, p2, p0, theta):
     new_point[2] = q[2] + p1[2]
     new_point = (new_point[0],new_point[1],new_point[2])
     # Translate axis and rotated point back to original location    
-    return new_point
+    return new_point 
 
 ''' function to covert from degrees to radians'''
 
