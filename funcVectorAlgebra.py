@@ -2,7 +2,7 @@ import math
 import os
 import sys
 import numpy as np
-import geom_readers
+#import geom_readers
 ''' FUNCTION TO RETURN THE DISTANCE BETWEEN TWO POINTS'''
 
 def distance_points(tuple1,tuple2):

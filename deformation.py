@@ -13,13 +13,13 @@ class readGeometry(object):
         
         beam=[]
         for line in self.file_geom:
-            
             coordinate = line.split()
-            if coordinate[0] == 'NodeNo' and coordinate[1]=='X' and coordinate[2]=='Y' and coordinate[3]=='Z':
-                print 'I cannot convert string to float'     
-            else :
-                
-                beam.append((float(coordinate[1]),float(coordinate[2]),float(coordinate[3])))
+        """
+            # if coordinate[0] == 'NodeNo' and coordinate[1]=='X' and coordinate[2]=='Y' and coordinate[3]=='Z':
+            # print 'Readinf from file. I cannot convert string to float'     
+            # else :
+            """       
+            beam.append((float(coordinate[1]),float(coordinate[2]),float(coordinate[3])))
 
         ''' add the halos segments and then transform the beam into line segments '''
 
@@ -49,12 +49,12 @@ class BeamTranform(object):
         for line in self.input_file:
 
             displacement = line.split()
-    
-            if displacement[0]=='NodeNo' and displacement[1]=='dX' and displacement[2]=='dY' and displacement[3]=='dZ'  and displacement[7]=='Thx' and displacement[8]=='Thy' and displacement[9]=='Thz' :
-                print 'I cannot convert string to float'
-            else:
-
-                translation_applied.append((float(displacement[1]),float(displacement[2]),float(displacement[3])))
+            """
+            # if displacement[0]=='NodeNo' and displacement[1]=='dX' and displacement[2]=='dY' and displacement[3]=='dZ'  and displacement[7]=='Thx' and displacement[8]=='Thy' and displacement[9]=='Thz' :
+                print 'Reading from file. I cannot convert string to float'
+            # else:
+            """
+            translation_applied.append((float(displacement[1]),float(displacement[2]),float(displacement[3])))
 
         '''add the extrapolated translation values at the halos based on an average'''
 
@@ -84,7 +84,7 @@ class BeamTranform(object):
             ind = self.beam.index(point)
             beam_geometry_translation.append((point[0],point[1],point[2] + translation_Z[ind]))
         
-
+        #print beam_geometry_translation
         return funcVectorAlgebra.segments(beam_geometry_translation)
 
 
@@ -93,17 +93,16 @@ class BeamTranform(object):
         rotation_applied = []
 
         for line in self.input_file:
-
             angle = line.split()
-
-            if angle[0]=='NodeNo' and angle[1]=='dX' and angle[2]=='dY' and angle[3]=='dZ'  and angle[7]=='Thx' and angle[8]=='Thy' and angle[9]=='Thz' :
-                print 'I cannot convert string to float'
+            """
+            #if angle[0]=='NodeNo' and angle[1]=='dX' and angle[2]=='dY' and angle[3]=='dZ'  and angle[7]=='Thx' and angle[8]=='Thy' and angle[9]=='Thz' :
+            #     print 'Reading from file. I cannot convert string to float'
             
-            else:
+            # else:
 
                 # append the list and convert form degrees to radians
-
-                rotation_applied.append(funcVectorAlgebra.degToRad(float(angle[8])))
+            """    
+            rotation_applied.append(funcVectorAlgebra.degToRad(float(angle[8])))
  
         theta_wing_root_halo = 0.0
         theta_wing_tip_halo = (2.0 * rotation_applied[-1]) - rotation_applied[-2]
@@ -116,7 +115,5 @@ class BeamTranform(object):
 
 
         return funcVectorAlgebra.theta_nodes(rotation_applied)
-
-
 
 
